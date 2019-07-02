@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
+#import "User.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

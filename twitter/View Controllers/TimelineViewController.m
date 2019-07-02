@@ -8,6 +8,8 @@
 
 #import "TimelineViewController.h"
 #import "APIManager.h"
+#import "TweetCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -30,16 +32,18 @@
         if (tweets) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
             NSLog(@"Dictionary: %@", tweets);
-            for (NSDictionary *dictionary in tweets) {
-                NSString *text = dictionary[@"text"];
-                NSLog(@"Dictionary text: %@", text);
-            }
+            //for (Tweet *curTweet in tweets) {
+            //    NSString *text = curTweet[@"text"];
+            //    NSLog(@"Dictionary text: %@", text);
+            //}
             
             self.tweets = tweets;
+            [self.timelineTableView reloadData];
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
     }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,10 +61,27 @@
 }
 */
 
-
+//provide a cell object for each row
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    //TweetCell *cell = [[TweetCell alloc] init];
     //TODO: implement this method
+    TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath];
+    
+    //cell = [timelineTableView dequeueReusableCellWithReuseIdentifier:@"TweetCell" forIndexPath:indexPath];
+    
+    Tweet *tweet = self.tweets[indexPath.item];
+    NSLog(@"Current text: %@", tweet.text);
+    cell.authorLabel.text = tweet.user.name;
+    cell.contentLabel.text = tweet.text;
+    cell.dateLabel.text = tweet.createdAtString;
+    cell.handleLabel.text = tweet.user.screenName;
+    //cell.tweet = tweet;
+    
+    NSString *profilePicString = tweet.user.profilePic;
+    NSURL *profilePicURL = [NSURL URLWithString:profilePicString];
+    cell.profileImage.image = nil;
+    [cell.profileImage setImageWithURL:profilePicURL];
+    return cell;
     
 }
 
