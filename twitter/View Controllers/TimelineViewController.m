@@ -22,9 +22,10 @@
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
+            NSLog(@"Dictionary: %@", tweets);
             for (NSDictionary *dictionary in tweets) {
                 NSString *text = dictionary[@"text"];
-                NSLog(@"%@", text);
+                NSLog(@"Dictionary text: %@", text);
             }
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
