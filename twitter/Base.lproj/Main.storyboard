@@ -118,14 +118,42 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jut-42-Fa0">
+                                                    <rect key="frame" x="131" y="96" width="52" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="retweet"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9A-Rw-nbe">
+                                                    <rect key="frame" x="263" y="96" width="52" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="favorite"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="retweet count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJ9-49-Lnp">
+                                                    <rect key="frame" x="182" y="102" width="52" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="favorite count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwS-7e-Y3X">
+                                                    <rect key="frame" x="312" y="103" width="52" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="authorLabel" destination="O7T-k6-Rq6" id="qmV-qS-RJK"/>
                                             <outlet property="contentLabel" destination="qpc-rF-TEI" id="fgK-OY-yIc"/>
                                             <outlet property="dateLabel" destination="j01-cs-eux" id="3AQ-qg-VtO"/>
+                                            <outlet property="favoriteButton" destination="L9A-Rw-nbe" id="UuM-YN-J8Q"/>
+                                            <outlet property="favoriteCountLabel" destination="bwS-7e-Y3X" id="FPc-cs-Dlu"/>
                                             <outlet property="handleLabel" destination="AfF-wI-Fc2" id="P1W-R4-3gN"/>
                                             <outlet property="profileImage" destination="ESg-xV-OO4" id="NeQ-BX-bxE"/>
+                                            <outlet property="retweetButton" destination="Jut-42-Fa0" id="AeT-dL-hqd"/>
+                                            <outlet property="retweetCountLabel" destination="UJ9-49-Lnp" id="pAM-NG-MTK"/>
                                             <outlet property="textLabel" destination="qpc-rF-TEI" id="6Qa-Qe-KCr"/>
                                         </connections>
                                     </tableViewCell>
