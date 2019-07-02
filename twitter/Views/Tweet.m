@@ -50,18 +50,18 @@
         // Convert Date to String
         self.createdAtString = [formatter stringFromDate:date];
     }
-    NSLog(@"COMPLETED ENTRY: %@", self);
+    //NSLog(@"COMPLETED ENTRY: %@", self);
     return self;
 }
 
 + (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries{
     NSMutableArray *tweets = [NSMutableArray array];
     for (NSDictionary *dictionary in dictionaries) {
-        NSLog(@"current entry: %@", dictionary);
+        //NSLog(@"current entry: %@", dictionary);
         Tweet *tweet = [[Tweet alloc] initWithDictionary:dictionary];
         [tweets addObject:tweet];
     }
-    NSLog(@"RESULTING ARRAY: %@", tweets);
+    //NSLog(@"RESULTING ARRAY: %@", tweets);
     return tweets;
 }
 

@@ -15,18 +15,14 @@
 
 @property (strong, nonatomic) NSArray *tweets;
 @property (weak, nonatomic) IBOutlet UITableView *timelineTableView;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 
 @end
 
 @implementation TimelineViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.timelineTableView.dataSource = self;
-    self.timelineTableView.delegate = self;
-    
-    
+- (void) fetchTimeline {
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
@@ -39,10 +35,26 @@
             
             self.tweets = tweets;
             [self.timelineTableView reloadData];
+            [self.refreshControl endRefreshing];
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
+        NSLog(@"@@@###########LINE41!");
+        
     }];
+    //[task resume];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.timelineTableView.dataSource = self;
+    self.timelineTableView.delegate = self;
+ 
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchTimeline) forControlEvents:UIControlEventValueChanged];
+    [self.timelineTableView insertSubview:self.refreshControl atIndex:0];
+    
+    [self fetchTimeline];
     
 }
 
