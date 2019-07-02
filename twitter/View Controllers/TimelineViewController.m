@@ -9,7 +9,11 @@
 #import "TimelineViewController.h"
 #import "APIManager.h"
 
-@interface TimelineViewController ()
+@interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property (strong, nonatomic) NSArray *tweets;
+@property (weak, nonatomic) IBOutlet UITableView *timelineTableView;
+
 
 @end
 
@@ -17,6 +21,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.timelineTableView.dataSource = self;
+    self.timelineTableView.delegate = self;
+    
     
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
@@ -27,6 +34,8 @@
                 NSString *text = dictionary[@"text"];
                 NSLog(@"Dictionary text: %@", text);
             }
+            
+            self.tweets = tweets;
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
@@ -48,5 +57,15 @@
 }
 */
 
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    //TODO: implement this method
+    
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.tweets.count;
+}
 
 @end
