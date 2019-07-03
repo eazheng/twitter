@@ -12,6 +12,8 @@
 #import "UIImageView+AFNetworking.h"
 #import "ComposeViewController.h"
 #import "Tweet.h"
+#import "AppDelegate.h"
+#import "LoginViewController.h"
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -145,6 +147,15 @@
     NSLog(@"TWEETING");
     [self.tweets insertObject:tweet atIndex:0];
     [self.timelineTableView reloadData];
+}
+
+
+- (IBAction)logoutAction:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
 }
 
 @end
