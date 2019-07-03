@@ -26,6 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 // For Retweets
 @property (strong, nonatomic) User *retweetedByUser;  // user who retweeted if tweet is retweet
 
+@property (nonatomic) int replyCount; // Update favorite count label
+
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 + (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries;
 

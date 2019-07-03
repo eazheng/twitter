@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *composerText;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *publishTweetButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *closeComposerButton;
-
+//todo later: UITextView delegate (somewhere)
 @end
 
 @implementation ComposeViewController
@@ -29,11 +29,10 @@
 
 - (IBAction)tweetButtonAction:(id)sender {
 
-    [[APIManager shared]postStatusWithText:self.composerText.text completion:^(Tweet *tweet, NSError *error) {
-        if(error){
+    [[APIManager shared] postStatusWithText:self.composerText.text completion:^(Tweet *tweet, NSError *error) {
+        if (error) {
             NSLog(@"Error composing Tweet: %@", error.localizedDescription);
-        }
-        else{
+        } else {
             [self.delegate didTweet:tweet];
             NSLog(@"Compose Tweet Success!");
         }
