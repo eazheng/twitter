@@ -10,10 +10,12 @@
 #import "APIManager.h"
 #import "TweetCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "ComposeViewController.h"
+#import "Tweet.h"
 
-@interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) NSArray *tweets;
+@property (strong, nonatomic) NSMutableArray *tweets;
 @property (weak, nonatomic) IBOutlet UITableView *timelineTableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
@@ -63,6 +65,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UINavigationController *navigationController = [segue destinationViewController];
+    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+    composeController.delegate = self;
+}
 /*
 #pragma mark - Navigation
 
@@ -82,7 +89,7 @@
     //cell = [timelineTableView dequeueReusableCellWithReuseIdentifier:@"TweetCell" forIndexPath:indexPath];
     
     Tweet *tweet = self.tweets[indexPath.item];
-    NSLog(@"Current text: %@", tweet.text);
+    //NSLog(@"Current text: %@", tweet.text);
     cell.authorLabel.text = tweet.user.name;
     cell.contentLabel.text = tweet.text;
     cell.dateLabel.text = tweet.createdAtString;
@@ -102,6 +109,12 @@
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.tweets.count;
+}
+
+- (void)didTweet:(Tweet *)tweet {
+    NSLog(@"TWEETING");
+    [self.tweets insertObject:tweet atIndex:0];
+    [self.timelineTableView reloadData];
 }
 
 @end
