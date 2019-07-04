@@ -105,7 +105,7 @@
     cell.authorLabel.text = tweet.user.name;
     cell.contentLabel.text = tweet.text;
     cell.dateLabel.text = tweet.createdAtString;
-    cell.handleLabel.text = tweet.user.screenName;
+    cell.handleLabel.text = [NSString stringWithFormat:@"%@%@", @"@", tweet.user.screenName];
     cell.retweetCountLabel.text = [NSString stringWithFormat:@"%d",tweet.retweetCount];
     cell.favoriteCountLabel.text = [NSString stringWithFormat:@"%d",tweet.favoriteCount];
     //cell.tweet = tweet;
@@ -154,8 +154,14 @@
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    //create a new instance of loginviewcontroller
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    //set the window's root viewcontroller
     appDelegate.window.rootViewController = loginViewController;
+    
+    //clear access tokens
+    [[APIManager shared] logout];
 }
 
 @end
