@@ -7,6 +7,7 @@
 //
 
 #import "Tweet.h"
+#import "DateTools.h"
 
 @implementation Tweet
 
@@ -38,18 +39,40 @@
         
         // Format and set createdAtString
         NSString *createdAtOriginalString = dictionary[@"created_at"];
-        //NSLog(@"created at: %@", createdAtOriginalString);
+        NSLog(@"created at: %@", createdAtOriginalString);
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         // Configure the input format to parse the date string
         formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
         // Convert String to Date
         NSDate *date = [formatter dateFromString:createdAtOriginalString];
+        NSDate *now = [[NSDate date] dateByAddingDays:-1];
+        BOOL postWasRecentBool = [date isLaterThan:now];
+        
+        //if post was less than 1 day ago
+        if (postWasRecentBool) {
+            self.createdAtString = date.shortTimeAgoSinceNow;
+        }
+        else {
+            // Configure output format
+            formatter.dateStyle = NSDateFormatterShortStyle;
+            formatter.timeStyle = NSDateFormatterNoStyle;
+            // Convert Date to String
+            self.createdAtString = [formatter stringFromDate:date];
+        }
+
+        /*
         // Configure output format
         formatter.dateStyle = NSDateFormatterShortStyle;
         formatter.timeStyle = NSDateFormatterNoStyle;
         // Convert Date to String
         self.createdAtString = [formatter stringFromDate:date];
+        
+        NSString *temp = [NSString stringWithFormat:@"%lu", formatter.dateStyle];
+        
+        NSLog(@"DATE: %@", temp);
+        NSLog(@"Created string: %@", self.createdAtString);
+         */
     }
     //NSLog(@"COMPLETED ENTRY: %@", self);
     return self;
