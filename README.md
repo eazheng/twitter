@@ -54,9 +54,12 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
+iPhone SE:
 <img src='http://g.recordit.co/jmCqqm6WU4.gif' title='Video Walkthrough with iPhone SE' width='' alt='Video Walkthrough' />
 
-GIF created with [Recordit](http://www.recordit.com).
+
+
+GIF created with [Recordit](http://www.recordit.co/).
 
 ## Notes
 
