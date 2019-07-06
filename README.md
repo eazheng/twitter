@@ -47,8 +47,8 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. I would be interested in seeing how to add the profile part of the app for each user.
+2. I would also be interested in seeing how to better implement the detail view controller because I basically copied and pasted a lot of the previous code from the TweetCell directly into the movie view controller document. I am wondering if there is any way to directly put the cell into the movie view controller.
 
 ## Video Walkthrough
 
@@ -57,6 +57,8 @@ Here's a walkthrough of implemented user stories:
 iPhone SE:
 <img src='http://g.recordit.co/jmCqqm6WU4.gif' title='Video Walkthrough with iPhone SE' width='' alt='Video Walkthrough' />
 
+iPhone 8 Horizontal view:
+<img src='http://g.recordit.co/z7yhARE1YE.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 
 GIF created with [Recordit](http://www.recordit.co/).
