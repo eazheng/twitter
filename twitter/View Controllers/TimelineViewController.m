@@ -14,6 +14,7 @@
 #import "Tweet.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "DetailsViewController.h"
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -74,10 +75,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UINavigationController *navigationController = [segue destinationViewController];
-    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
-    composeController.delegate = self;
+    if ([segue.identifier isEqualToString:@"ShowComposer"]) {
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+        composeController.delegate = self;
+    }
+    //for details view controller
+    else if ([segue.identifier isEqualToString:@"ShowDetails"]) {
+        TweetCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.timelineTableView indexPathForCell:tappedCell];
+
+        DetailsViewController *detailViewController = [segue destinationViewController];
+        NSLog(@"2 LINE 87 HELLOOOO");
+        detailViewController.tweet = self.tweets[indexPath.row];
+        detailViewController.timelineTableView = self.timelineTableView;
+    }
 }
 /*
 #pragma mark - Navigation
