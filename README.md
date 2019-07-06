@@ -34,7 +34,7 @@ The following **optional** features are implemented:
   - Contains a section with the users basic stats: # tweets, # following, # followers
 - [ ] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
 - [ ] When composing, you should have a countdown for the number of characters remaining for the tweet (out of 140) (**1 point**)
-- [ ] After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
+- [x] After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
 - [ ] User can reply to any tweet, and replies should be prefixed with the username and the reply_id should be set when posting the tweet (**2 points**)
 - [ ] User sees embedded images in tweet if available
 - [ ] User can switch between timeline, mentions, or profile view through a tab bar (**3 points**)
@@ -66,6 +66,8 @@ GIF created with [Recordit](http://www.recordit.co/).
 ## Notes
 
 Describe any challenges encountered while building the app.
+
+A challenge was getting the home timeline to be formatted correctly. The autolayout took a while to correctly add the constraints. In addition, I changed the structure of some outlets which resulted in some leftover outlets that caused mysterious issues throughout the process. In addiiton it was challenging to complete all of the parts in a timely fashion because it took a while to figure each component out without having the detailed guides or videos.
 
 ## Credits
 
