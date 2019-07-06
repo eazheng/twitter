@@ -34,8 +34,6 @@
     NSLog(@"HELLOOOO");
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    //cell = [timelineTableView dequeueReusableCellWithReuseIdentifier:@"TweetCell" forIndexPath:indexPath];
 
     Tweet *tweet = self.tweet;
     //NSLog(@"Current text: %@", tweet.text);
